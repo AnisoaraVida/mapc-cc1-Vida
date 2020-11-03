@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="124px" preserveAspectRatio="none" style="width:98px;height:124px;" version="1.1" viewBox="0 0 98 124" width="98.4px" zoomAndPan="magnify"><defs><filter height="300%" id="f1hqzuxiyrdg9v" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="0.8"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="1.6" dy="1.6" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[3c3bb9b57f443d12d8ad3746d7ca7e6f]
+cluster vmosprovider--><polygon fill="#FFFFFF" filter="url(#f1hqzuxiyrdg9v)" points="8.8,9.6,50.8,9.6,53.6,18.5953,89.6,18.5953,89.6,119.2,8.8,119.2,8.8,9.6" style="stroke: #000000; stroke-width: 0.6000000000000001;"/><line style="stroke: #000000; stroke-width: 0.6000000000000001;" x1="8.8" x2="53.6" y1="18.5953" y2="18.5953"/><text fill="#000000" font-family="sans-serif" font-size="5.6" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="39.6" x="10.4" y="15.8141">vmosprovider</text><!--MD5=[7442f3b126ee602ae02566c1a49e158a]
+cluster api--><polygon fill="#FFFFFF" filter="url(#f1hqzuxiyrdg9v)" points="18.4,26.8,29.6,26.8,32.4,35.7953,80,35.7953,80,109.6,18.4,109.6,18.4,26.8" style="stroke: #000000; stroke-width: 0.6000000000000001;"/><line style="stroke: #000000; stroke-width: 0.6000000000000001;" x1="18.4" x2="32.4" y1="35.7953" y2="35.7953"/><text fill="#000000" font-family="sans-serif" font-size="5.6" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="8.8" x="20" y="33.0141">api</text><!--MD5=[b0799a3cc90c20e7807e459933718585]
+class VmOSName--><rect fill="#FEFECE" filter="url(#f1hqzuxiyrdg9v)" height="19.2" id="VmOSName" style="stroke: #A80036; stroke-width: 0.6000000000000001;" width="40" x="29.2" y="84"/><ellipse cx="35.2" cy="90.4" fill="#B4A7E5" rx="4.4" ry="4.4" style="stroke: #A80036; stroke-width: 0.4;"/><path d="M33.7711,88.9061 L33.7711,88.0428 L36.7229,88.0428 L36.7229,88.9061 L35.7367,88.9061 L35.7367,92.1367 L36.7229,92.1367 L36.7229,93 L33.7711,93 L33.7711,92.1367 L34.7572,92.1367 L34.7572,88.9061 Z "/><text fill="#000000" font-family="sans-serif" font-size="4.8" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="27.2" x="40.8" y="92.2141">VmOSName</text><line style="stroke: #A80036; stroke-width: 0.6000000000000001;" x1="29.6" x2="68.8" y1="96.8" y2="96.8"/><line style="stroke: #A80036; stroke-width: 0.6000000000000001;" x1="29.6" x2="68.8" y1="100" y2="100"/><!--MD5=[9e018b6270331aadf8fbae08b6d2b902]
+class DefaultOSName--><rect fill="#FEFECE" filter="url(#f1hqzuxiyrdg9v)" height="19.2" id="DefaultOSName" style="stroke: #A80036; stroke-width: 0.6000000000000001;" width="48.8" x="24.8" y="40.8"/><ellipse cx="30.8" cy="47.2" fill="#EB937F" rx="4.4" ry="4.4" style="stroke: #A80036; stroke-width: 0.4;"/><path d="M32.2457,49.8 L29.1578,49.8 L29.1578,44.8428 L32.2457,44.8428 L32.2457,45.7061 L30.1373,45.7061 L30.1373,46.7752 L32.0465,46.7752 L32.0465,47.6385 L30.1373,47.6385 L30.1373,48.9367 L32.2457,48.9367 Z "/><text fill="#000000" font-family="sans-serif" font-size="4.8" lengthAdjust="spacingAndGlyphs" textLength="36" x="36.4" y="49.0141">DefaultOSName</text><line style="stroke: #A80036; stroke-width: 0.6000000000000001;" x1="25.2" x2="73.2" y1="53.6" y2="53.6"/><line style="stroke: #A80036; stroke-width: 0.6000000000000001;" x1="25.2" x2="73.2" y1="56.8" y2="56.8"/><!--MD5=[45f32668f5a009844e80273fcb1a9f45]
+link DefaultOSName to VmOSName--><path d="M49.2,60 C49.2,64.636 49.2,70.412 49.2,75.84 " fill="none" id="DefaultOSName-&gt;VmOSName" style="stroke: #A80036; stroke-width: 0.4; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="52,75.872,49.2,83.872,46.4,75.872,52,75.872" style="stroke: #A80036; stroke-width: 0.4;"/><!--MD5=[976c65bce595a6f2d3371158c16d04f4]
+@startuml
+
+package vmosprovider{
+package api{
+Interface VmOSName
+Enum DefaultOSName
+DefaultOSName ..|> VmOSName
+}
+}
+
+@enduml
+
+PlantUML version 1.2020.03beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.4+10-b304.77
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+--></g></svg>

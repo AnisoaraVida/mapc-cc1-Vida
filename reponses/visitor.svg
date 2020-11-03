@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="80.8px" preserveAspectRatio="none" style="width:76px;height:80px;" version="1.1" viewBox="0 0 76 80" width="76.8px" zoomAndPan="magnify"><defs><filter height="300%" id="f1ty92fhr72jvs" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="0.8"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="1.6" dy="1.6" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[eeea0738c453c72b590e2b5cc04f3f07]
+cluster visitor--><polygon fill="#FFFFFF" filter="url(#f1ty92fhr72jvs)" points="8.8,9.6,30,9.6,32.8,18.5953,68,18.5953,68,76,8.8,76,8.8,9.6" style="stroke: #000000; stroke-width: 0.6000000000000001;"/><line style="stroke: #000000; stroke-width: 0.6000000000000001;" x1="8.8" x2="32.8" y1="18.5953" y2="18.5953"/><text fill="#000000" font-family="sans-serif" font-size="5.6" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="18.8" x="10.4" y="15.8141">visitor</text><!--MD5=[7442f3b126ee602ae02566c1a49e158a]
+cluster api--><polygon fill="#FFFFFF" filter="url(#f1ty92fhr72jvs)" points="18.4,26.8,29.6,26.8,32.4,35.7953,58.4,35.7953,58.4,66.4,18.4,66.4,18.4,26.8" style="stroke: #000000; stroke-width: 0.6000000000000001;"/><line style="stroke: #000000; stroke-width: 0.6000000000000001;" x1="18.4" x2="32.4" y1="35.7953" y2="35.7953"/><text fill="#000000" font-family="sans-serif" font-size="5.6" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="8.8" x="20" y="33.0141">api</text><!--MD5=[53bf68ed638bcf4718423098b3d480ea]
+class Visitor--><rect fill="#FEFECE" filter="url(#f1ty92fhr72jvs)" height="19.2" id="Visitor" style="stroke: #A80036; stroke-width: 0.6000000000000001;" width="27.2" x="24.8" y="40.8"/><ellipse cx="30.8" cy="47.2" fill="#B4A7E5" rx="4.4" ry="4.4" style="stroke: #A80036; stroke-width: 0.4;"/><path d="M29.3711,45.7061 L29.3711,44.8428 L32.3229,44.8428 L32.3229,45.7061 L31.3367,45.7061 L31.3367,48.9367 L32.3229,48.9367 L32.3229,49.8 L29.3711,49.8 L29.3711,48.9367 L30.3572,48.9367 L30.3572,45.7061 Z "/><text fill="#000000" font-family="sans-serif" font-size="4.8" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="14.4" x="36.4" y="49.0141">Visitor</text><line style="stroke: #A80036; stroke-width: 0.6000000000000001;" x1="25.2" x2="51.6" y1="53.6" y2="53.6"/><line style="stroke: #A80036; stroke-width: 0.6000000000000001;" x1="25.2" x2="51.6" y1="56.8" y2="56.8"/><!--MD5=[9810a31388a97fb2cf24cf7d93279853]
+@startuml
+
+package visitor{
+package api{
+Interface Visitor
+}
+}
+
+@enduml
+
+PlantUML version 1.2020.03beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.4+10-b304.77
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+--></g></svg>
