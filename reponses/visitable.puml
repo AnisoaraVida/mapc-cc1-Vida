@@ -1,0 +1,13 @@
+@startuml
+
+package visitable{
+package api{
+Interface Visitable
+}
+package impl{
+Class VisitableImpl
+VisitableImpl ...|> Visitable
+}
+}
+
+@enduml

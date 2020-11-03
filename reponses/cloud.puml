@@ -1,0 +1,263 @@
+@startuml
+
+package cloud{
+package api{
+Interface Cloud{
+    getPlans() : Set<DeploymentPlan>
+    deployPlan(DeploymentPlan plan) : boolean
+    startPlan(DeploymentPlan plan) : boolean
+    stopPlan(DeploymentPlan plan) : boolean
+    removePlan(DeploymentPlan plan) : boolean
+    }
+
+Cloud --|> NamedElement
+
+Interface Component{
+    getComponentType() : ComponentType
+}
+
+Component ---|> Resource
+Component ---|> RunnableElement
+
+
+Interface ComponentType{
+    componentTypeKey() : string
+    createComponent(String name) : Component
+}
+
+ComponentType ---|> Resource
+
+Interface ComputeNode{
+addVMachine(VirtualMachine machine) : boolean
+removeVMachine(VirtualMachine machine) : boolean
+getVMachines() : Set<VirtualMachine>
+shutDownVMachine(VirtualMachine machine) : boolean
+startVirtualMachine(VirtualMachine machine) : boolean
+}
+
+ComputeNode ---|> Resource
+ComputeNode ---|> RunnableElement
+
+Interface DeploymentPlan{
+    newStandardComputeNode(StandardComputeNodeSize size, String name) : ComputeNode
+    newPersonalizedComputeNode(int nbCPU, int memory, String name) : ComputeNode
+    newVirtualMachine(String name) : VirtualMachine
+    newService(String key, String name) : Service
+    newComponent(String key, String name) : Component
+    getNodes() : Set<ComputeNode>
+    getNode(String name) : Optional<ComputeNode>
+    deployVMonNode(VirtualMachine vm, ComputeNode node) : DeploymentPlan
+    deployServiceOnVm(Service service, VirtualMachine vm) : DeploymentPlan
+    attachComponentToService(Component component, Service service) DeploymentPlan
+    isValid() : boolean
+    getReport() : DeploymentPlanReport
+}
+DeploymentPlan ---|> NamedElement
+DeploymentPlan ---|> RunnableElement
+
+Interface DeployementReport{
+    exceptions() : List<Exception>
+
+    addException(Exception e) : boolean
+
+    messages() : List<String>
+}
+
+
+Interface DeploymentShutdown{
+    setNext(DeploymentPlanShutdown handler)
+    stop(DeploymentPlan plan) : boolean
+}
+Interface DeployementPlanStartup{
+    setNext(DeploymentPlanStartup handler)
+    start(DeploymentPlan plan, boolean bestEffort) : boolean
+}
+
+
+Interface NamedElement{
+    name() : string
+}
+
+Interface Resource{
+        getNbCPU() : int
+        getMemory() : int
+        setNbCPU(int nbCPU)
+        setMemory(int memory)
+
+}
+
+Resource --|> NamedElement
+
+Interface RunnableElement{
+    start() : boolean
+    stop() : boolean
+    isRunning() : boolean
+    restart() : default boolean
+}
+
+
+Interface Service{
+    getComponent() : Component
+
+    setComponent(Component component);
+
+    getServiceType() : ServiceType
+}
+
+Service ---|> Resource
+Service ---|> RunnableElement
+
+Interface ServiceType{
+    serviceTypeKey() : string
+    createService(String name) : Service
+}
+ServiceType --|> NamedElement
+
+Enum StandardComputeNodeSize{
+    XSMALL, SMALL, MEDIUM, MEDIUM LARGE, LARGE, XLARGE
+    - nbCPU : int
+    - memory : int
+    - StandardComputeNodeSize(int nbCPU, int memory)
+    + getNbCPU() : int
+    + getMemory() : int
+}
+
+Interface VirtualMachine{
+    setOS(VmOSName os)
+
+    getOS() : VmOSName
+
+    addService(Service service) : boolean
+
+    removeService(Service service) : boolean
+
+    getServices() : Set<Service>
+}
+
+VirtualMachine ---|> Resource
+VirtualMachine ---|> RunnableElement
+
+}
+
+package impl{
+
+    package base{
+Class CloudImpl
+CloudImpl --|> NamedElementImpl
+CloudImpl ..|> Cloud
+
+Class ComponentImpl
+ComponentImpl --|> NamedElementImpl
+ComponentImpl ..|> Component
+
+Class ComputeNodeImpl
+ComponentImpl --|> NamedElementImpl
+ComponentImpl ..|> ComputeNode
+
+Class DefaultComputeNode
+DefaultComputeNode ---|> ComputeNodeImpl
+
+Class DefaultDeployementPlan
+DefaultDeployementPlan ---|> DeploymentPlanImpl
+
+Class DefaultDeployementPlanReport
+DefaultDeployementPlanReport ---|> DefaultDeployementPlanReportImpl
+
+Class DefaultRessource
+DefaultRessource ---|> DefaultRessourceImpl
+
+Class DefaultRunnableMachine
+DefaultRunnableMachine ---|> DefaultRunnableMachineImpl
+
+Class DefaultVirtualMachine
+DefaultVirtualMachine ---|> DefaultVirtualMachineImpl
+
+Class DeploymentPlanImpl
+DeploymentPlanImpl --|> NamedElementImpl
+DeploymentPlanImpl ..|> DeploymentPlan
+
+Class DeploymentPlanReportImpl
+DeploymentPlanReportImpl --|> NamedElementImpl
+DeploymentPlanReportImpl ..|> DeploymentPlanReport
+
+Class DeploymentPlanStartupImpl
+DeploymentPlanStartumImpl --|> NamedElementImpl
+DeploymentPlanStartumImpl ..|> DeploymentPlanStartup
+
+Class NamedElementImpl
+NamedElementImpl .|> NamedElement
+
+Class ResourceImpl
+ResourceImpl --|> NamedElementImpl
+ResourceImpl ..|> Resource
+
+Class RunnableElementImpl
+RunnableElementImpl ..|> RunnableElement
+
+Class ServiceImpl
+ServiceImpl --|> NamedElementImpl
+ServiceImpl ..|> Service
+
+Class ServiceShutdown
+ServiceShutdown --|> DeploymentPlanShutdownImpl
+
+Class ServiceStartup
+ServiceStartup --|> DeploymentPlanStartupImpl
+
+Class VirtualMachineImpl
+VirtualMachineImpl --|> NamedElementImpl
+VirtualMachineImpl ..|> VirtualMachine
+
+}
+
+
+    package shutdown{
+Class ApplicationServiceShutdown
+ApplicationServiceShutdown --|> ServiceShutdown
+
+Class ComputeNodeShutdown
+ComputeNodeShutdown --|> DeploymentPlanShutdownImpl
+
+Class LoggingServiceShutdown
+LoggingServiceShutdown --|> ServiceShutdown
+
+Class MonitoringServiceShutdown
+MonitoringServiceShutdown --|> ServiceShutdown
+
+Class StorageServiceShutdown
+StorageServiceShutdown --|> ServiceShutdown
+
+Class VirtualMachineShutdown
+VirtualMachineShutdown --|> DeploymentPlanShutdownImpl
+
+Class WebServiceShutdown
+WebServiceShutdown  --|> ServiceShutdown
+
+}
+    package startup{
+Class ApplicationServiceStartup
+ApplicationServiceStartup --|> ServiceStartup
+
+Class ComputeNodeStartup
+ComputeNodeStartup --|> DeploymentPlanStartupImpl
+
+Class LoggingServiceStartup
+LoggingServiceStartup --|> ServiceStartup
+
+Class MonitoringServiceStartup
+MonitoringServiceStartup --|> ServiceStartup
+
+Class StorageServiceStartup
+StorageServiceStartup --|> ServiceStartup
+
+Class VirtualMachineStartup
+VirtualMachineStartup --|> DeploymentPlanStartupImpl
+
+Class WebServiceStartup
+WebServiceStartup --|> ServiceStartup
+}
+
+}
+}
+
+@enduml

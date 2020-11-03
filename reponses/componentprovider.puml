@@ -1,0 +1,58 @@
+@startuml
+package componentprovider{
+package api{
+Interface ApacheComponentType
+ApacheComponentType --|> ComponentType
+
+Interface FlumeComponentType
+FlumeComponentType --|> ComponentType
+
+Interface MongoComponentType
+MongoComponentType --|> ComponentType
+
+Interface MySQLComponentType
+MySQLComponentType --|> ComponentType
+
+Interface NginxComponentType
+NginxComponentType --|> ComponentType
+
+Interface PrometheusComponentType
+PrometheusComponentType --|> ComponentType
+
+Interface TomcatComponentType
+TomcatComponentType --|> ComponentType
+
+}
+package impl{
+Class Apache
+Apache --|> ComponentImpl
+Apache ..|> ApacheComponentType
+
+Class Flume
+Flume --|> ComponentImpl
+Flume ..|> FlumeComponentType
+
+Class Mongo
+Mongo --|> ComponentImpl
+Mongo ..|> MongoComponentType
+
+Class MySQL
+MySQL --|> ComponentImpl
+MySQL ..|> MySQLComponentType
+
+Class Nginx
+Nginx --|> ComponentImpl
+Nginx ..|> NginxComponentType
+
+Class Prometheus
+Prometheus --|> ComponentImpl
+Prometheus ..|> PrometheusComponentType
+
+Class Tomcat
+Tomcat --|> ComponentImpl
+Tomcat ..|> TomcatComponentType
+
+}
+}
+
+@enduml

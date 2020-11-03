@@ -1,0 +1,9 @@
+@startuml
+
+package visitor{
+package api{
+Interface Visitor
+}
+}
+
+@enduml

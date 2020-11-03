@@ -1,0 +1,7 @@
+@startuml
+
+package exception{
+Class ResourceAlreadyExistsException
+}
+
+@enduml

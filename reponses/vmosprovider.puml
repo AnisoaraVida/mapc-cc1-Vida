@@ -1,0 +1,11 @@
+@startuml
+
+package vmosprovider{
+package api{
+Interface VmOSName
+Enum DefaultOSName
+DefaultOSName ..|> VmOSName
+}
+}
+
+@enduml

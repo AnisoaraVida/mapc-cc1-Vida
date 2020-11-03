@@ -1,0 +1,36 @@
+@startuml
+
+package creation{
+package api{
+Interface CloudProvider
+Interface ComponentCreator
+Interface ComputeNodeCreator
+Interface DeploymentPlanCreator
+Interface ServiceCreator
+Interface VirtualMachineCreator
+
+}
+
+package cloudproviders{
+package amiazon{
+Class AmiazonCloud
+AmiazonCloud --|> CloudImpl
+
+Class AmiazonCloudProvider
+AmiazonCloudProvider ..|> CloudProvider
+
+Class AmiazonDeployementPlanCreator
+AmiazonDeployementPlanCreator ..|> DeploymentPlanCreator
+
+}
+package softcloud{
+}
+}
+
+package impl{
+Class CloudProviderLoader
+}
+
+}
+
+@enduml
