@@ -142,19 +142,57 @@ VirtualMachine ---|> RunnableElement
 package impl{
 
     package base{
-Class CloudImpl
+Class CloudImpl{
+    - plans : Set<DeploymentPlan>
+    + getPlans() : Set<DeploymentPlan>
+    + deployPlan(DeploymentPlan plan)  : boolean
+    + stopPlan(DeploymentPlan plan) : boolean
+    + startPlan(DeploymentPlan plan) : boolean
+    + removePlan(DeploymentPlan plan) : boolean
+}
 CloudImpl --|> NamedElementImpl
 CloudImpl ..|> Cloud
 
-Class ComponentImpl
+Class ComponentImpl{
+    - runnable : DefaultRunnableElement
+     - resource : DefaultResource
+
+         + int getNbCPU() : int
+         + int getMemory() : int
+         + setNbCPU(int nbCPU) : void
+         + setMemory(int memory) : void
+          + start() : boolean
+         +  stop() : boolean
+         + isRunning() : boolean
+}
 ComponentImpl --|> NamedElementImpl
 ComponentImpl ..|> Component
 
-Class ComputeNodeImpl
+Class ComputeNodeImpl{
+        - resource : DefaultResource
+         -  runnable : DefaultRunnableElement
+         -  vmachines : Set<VirtualMachine>
+         -  remainingCPU : int
+         - remainingMemory : int
+         + addVMachine(VirtualMachine machine) : boolean
+         + removeVMachine(VirtualMachine machine) : boolean
+         + getVMachines() : Set<VirtualMachine>
+         + shutDownVMachine(VirtualMachine machine) : boolean
+         + startVirtualMachine(VirtualMachine machine) : boolean
+         + getNbCPU() : int
+         + getMemory() : int
+         + setNbCPU(int nbCPU) : void
+         + setMemory(int memory) : void
+         + start() : boolean
+         + stop() : boolean
+         + isRunning() : boolean
+
+}
 ComponentImpl --|> NamedElementImpl
 ComponentImpl ..|> ComputeNode
 
-Class DefaultComputeNode
+Class DefaultComputeNode{
+    + DefaultComputeNode(String name)}
 DefaultComputeNode ---|> ComputeNodeImpl
 
 Class DefaultDeployementPlan
